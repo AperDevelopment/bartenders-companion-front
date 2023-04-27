@@ -1,9 +1,8 @@
-import { Link } from 'react-router-dom';
 import './NotFound.css';
-import useDocumentTitle from '../../hooks/useDocumentTitle';
+import { Link } from 'react-router-dom';
 
 const NotFound = () => {
-    useDocumentTitle("Not Found • Bartender's Companion");
+    document.title = "Not Found • Bartender's Companion";
 
     return (
         <div className="not-found">
