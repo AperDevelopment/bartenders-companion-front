@@ -1,8 +1,9 @@
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import Navbar from './components/Navbar';
-import NotFound from './pages/NotFound';
 import Cocktails from './pages/Cocktails';
+import CocktailView from './pages/CocktailView';
+import NotFound from './pages/NotFound';
 // import Home from './pages/Home';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
                     <Routes>
                         {/* <Route path='/' element={<Home />} index /> */}
                         <Route path="/cocktails" element={<Cocktails />} />
+                        <Route path="/cocktails/:id" element={<CocktailView />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
                 </main>

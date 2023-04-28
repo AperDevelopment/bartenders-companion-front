@@ -15,9 +15,11 @@ const Cocktails = () => {
         <div className="cocktails-container">
             <h1>Cocktails</h1>
             <div className={`cocktail-list ${cocktails.length > 10 ? 'large-list' : ''}`}>
-                {cocktails.map((cocktail) => (
-                    <CocktailCard key={cocktail.name} cocktail={cocktail} />
-                ))}
+                {cocktails
+                    .filter((cocktail) => cocktail)
+                    .map((cocktail) => (
+                        <CocktailCard key={cocktail.name} cocktail={cocktail} />
+                    ))}
             </div>
         </div>
     );

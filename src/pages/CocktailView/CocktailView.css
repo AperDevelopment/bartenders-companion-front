@@ -1,0 +1,99 @@
+.cocktail-view {
+    width: 50vw;
+    height: 75vh;
+    margin: 12.5vh 25vw;
+    display: flex;
+    flex-direction: column;
+    padding: 0.5em 2em;
+    border-radius: 2em;
+    background-color: var(--background-primary);
+    box-shadow: 0 5px 5px 0 var(--shadow-color);
+    transition: all 0.3s;
+    animation: fade-in-none 1s;
+}
+
+.cocktail-view.small-view {
+    height: 16em;
+    margin-top: calc((100vh - 16em) / 2);
+    margin-bottom: calc((100vh - 16em) / 2);
+}
+
+nav.open + * .cocktail-view {
+    margin-left: 17.5vw;
+    margin-right: 17.5vw;
+}
+
+.cocktail-view .cocktail-image {
+    margin-top: -0.5em;
+    margin-left: -2em;
+    width: 25em;
+    height: 17em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-accent);
+    border-radius: 2em 0 0 0;
+}
+
+.cocktail-view.small-view .cocktail-image {
+    border-radius: 2em 0 0 2em;
+}
+
+.cocktail-view .cocktail-image img {
+    object-fit: cover;
+}
+
+.cocktail-view .cocktail-image *:not(img) {
+    width: 10em;
+    height: 10em;
+}
+
+.cocktail-view header {
+    display: flex;
+}
+
+.cocktail-view .view-header {
+    display: flex;
+    flex-direction: column;
+    width: calc(50vw - 25em);
+    padding: 1em 1em 0.5em;
+}
+
+.cocktail-view .view-header > span {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-bottom: 0.5em;
+    font-size: 1.5em;
+}
+
+.cocktail-view .view-header > span h2 {
+    margin: 0 0.5em;
+    font-size: inherit;
+}
+
+.cocktail-view .icons-big .icon {
+    width: 1.75em;
+    height: 1.75em;
+    margin-left: 0.75em;
+}
+
+.cocktail-view main {
+    display: grid;
+    grid-template-columns: calc(100% / 3) calc(200% / 3);
+    height: 100%;
+    width: 100%;
+}
+
+.cocktail-view main aside, .cocktail-view main section {
+    padding: 1.5em 2em;
+}
+
+.cocktail-view main h3 {
+    margin-left: -1em;
+    margin-bottom: 0.5em;
+}
+
+.cocktail-view main li {
+    padding: 0.5em 0 1em 1em;
+}

@@ -17,7 +17,7 @@
     justify-content: flex-end;
 }
 
-.cocktail-image {
+.card .cocktail-image {
     width: 15em;
     height: 15em;
     display: flex;
@@ -27,17 +27,21 @@
     border-radius: 1em 1em 0 0;
 }
 
-.cocktail-image *:not(img) {
+.card .cocktail-image img {
+    object-fit: cover;
+}
+
+.card .cocktail-image *:not(img) {
     width: 10em;
     height: 10em;
 }
 
-.card-body {
+.card .card-body {
     padding: 0.5em 0.75em;
     height: 7em;
 }
 
-.card-body span {
+.card .card-body span {
     font-size: 0.9em;
 }
 
@@ -65,20 +69,21 @@
     color: var(--foreground-secondary);
 }
 
-.icons {
+.cocktail-card .icons {
     position: relative;
     top: -22em;
     right: -13em;
     width: 2em;
-    height: 15em;
+    /* height: 14.25em; */
+    bottom: 0;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
 }
 
-.icons * {
+.cocktail-card .icons * {
     width: 1.75em;
     height: 1.75em;
-    margin-bottom: 0.25em;
+    margin-top: 0.25em;
 }

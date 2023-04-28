@@ -1,15 +1,17 @@
 class CocktailModel {
-    readonly id: number;
-    readonly name: string;
+    readonly id: number = -1;
+    readonly name: string = '';
     readonly description?: string;
-    readonly volume_ml: number;
-    readonly is_alcoholic: boolean;
-    readonly is_vegan: boolean;
-    readonly is_hot: boolean;
-    readonly ingredients: string[];
-    readonly instructions: string[];
+    readonly volume_ml: number = 0;
+    readonly is_alcoholic: boolean = false;
+    readonly is_vegan: boolean = false;
+    readonly is_hot: boolean = false;
+    readonly ingredients: string[] = [];
+    readonly instructions: string[] = [];
 
     constructor(cocktail: any) {
+        console.table(cocktail);
+        if (!cocktail) return;
         const { id, name, description, volume_ml, is_alcoholic, is_vegan, is_hot, ingredients, instructions } = cocktail;
         this.id = id;
         this.name = name;

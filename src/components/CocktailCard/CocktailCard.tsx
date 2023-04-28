@@ -30,7 +30,7 @@ const CocktailCard = ({ cocktail }: Props) => {
             <div className="icons">
                 {cocktail.is_alcoholic && <TbGlassFull />}
                 {cocktail.is_vegan && <TbLeaf />}
-                {true && <RiTempHotLine />}
+                {cocktail.is_hot && <RiTempHotLine />}
             </div>
         </div>
     );
