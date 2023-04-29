@@ -26,4 +26,15 @@ const getCocktailById = (id: number, callback: (cocktail: CocktailModel) => void
         .then((data) => callback(new CocktailModel(data.result)));
 };
 
-export { getAllCocktails, getCocktailById };
+const updateCocktailById = (id: number, cocktail: CocktailModel, callback: () => void) => {
+    fetch(`${LoginURL}/${id}`, {
+        method: 'PUT',
+        headers: {
+            'X-Api-Key': API_KEY,
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cocktail)
+    }).then(callback);
+};
+
+export { getAllCocktails, getCocktailById, updateCocktailById };

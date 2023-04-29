@@ -1,7 +1,7 @@
 .cocktail-view {
     width: 50vw;
     height: 75vh;
-    margin: 12.5vh 25vw;
+    margin: calc((100vh - 75vh) / 2 - 1em) 25vw;
     display: flex;
     flex-direction: column;
     padding: 0.5em 2em;
@@ -49,6 +49,7 @@ nav.open + * .cocktail-view {
 }
 
 .cocktail-view header {
+    width: 100%;
     display: flex;
 }
 
@@ -70,6 +71,28 @@ nav.open + * .cocktail-view {
 .cocktail-view .view-header > span h2 {
     margin: 0 0.5em;
     font-size: inherit;
+}
+
+.cocktail-view .admin-buttons {
+    width: calc(100% / 3);
+    display: flex;
+    justify-content: flex-end;
+}
+
+.cocktail-view .admin-buttons .button {
+    border-radius: 1em;
+    padding: 0.5em;
+    transition: all 0.3s;
+    cursor: pointer;
+    width: 1em;
+    height: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cocktail-view .admin-buttons .button:hover {
+    background: radial-gradient(circle, var(--button-hover) 75%, transparent 100%);
 }
 
 .cocktail-view .icons-big .icon {

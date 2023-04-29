@@ -3,12 +3,14 @@
 * {
     --foreground-primary: #353839;
     --foreground-secondary: #282A2B;
-    --foreground-accent: #006700;
+    /* --foreground-accent: #006700; */
+    --foreground-accent: #960018;
 
     --background-primary: #CBCECF;
     --background-secondary: #EAEBEC;
     --background-accent: white;
 
+    --button-hover: rgba(0, 0, 0, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.4);
 
     margin: 0;
