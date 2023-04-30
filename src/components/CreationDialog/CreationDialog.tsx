@@ -146,10 +146,10 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
                 </Grid>
             </DialogContent>
             <DialogActions sx={{ backgroundColor: 'var(--background-primary)' }}>
-                <Button onClick={onClose} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit' }}>
+                <Button onClick={onClose} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit', '&:hover': { color: 'var(--foreground-accent)' } }}>
                     Cancel
                 </Button>
-                <Button onClick={confirm} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit' }}>
+                <Button onClick={confirm} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit', '&:hover': { color: 'var(--foreground-accent)' } }}>
                     Confirm
                 </Button>
             </DialogActions>

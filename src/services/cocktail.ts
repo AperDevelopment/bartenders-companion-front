@@ -50,4 +50,14 @@ const updateCocktailById = (id: number, cocktail: CocktailModel, callback: () =>
     }).then(callback);
 };
 
-export { isAdmin, getAllCocktails, getCocktailById, insertCocktail, updateCocktailById };
+const deleteCocktailById = (id: number, callback: () => void) => {
+    fetch(`${LoginURL}/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'X-Api-Key': API_KEY,
+            'Content-Type': 'application/json'
+        }
+    }).then(callback);
+};
+
+export { isAdmin, getAllCocktails, getCocktailById, insertCocktail, updateCocktailById, deleteCocktailById };

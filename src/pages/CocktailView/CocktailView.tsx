@@ -1,33 +1,42 @@
 import './CocktailView.css';
 import CocktailModel from '../../model/cocktail';
 import { useEffect, useState } from 'react';
-import { getCocktailById, isAdmin, updateCocktailById } from '../../services/cocktail';
-import { useParams } from 'react-router-dom';
+import { deleteCocktailById, getCocktailById, isAdmin, updateCocktailById } from '../../services/cocktail';
+import { useNavigate, useParams } from 'react-router-dom';
 import { FaCocktail, FaEdit, FaTrash } from 'react-icons/fa';
 import { RiTempHotLine } from 'react-icons/ri';
 import { TbGlassFull, TbLeaf } from 'react-icons/tb';
 import { Tooltip } from '@mui/material';
 import CreationDialog from '../../components/CreationDialog';
+import ConfirmationDialog from '../../components/ConfirmationDialog';
 
 const CocktailView = () => {
     const params = useParams();
-    const [cocktail, setCocktail] = useState(new CocktailModel({}));
+    const navigate = useNavigate();
 
+    const [cocktail, setCocktail] = useState(new CocktailModel({}));
     const [openEdit, setOpenEdit] = useState(false);
+    const [openDelete, setOpenDelete] = useState(false);
 
     const handleClickOpenEdit = () => setOpenEdit(true);
     const handleCloseEdit = () => setOpenEdit(false);
 
+    const handleClickOpenDelete = () => setOpenDelete(true);
+    const handleCloseDelete = () => setOpenDelete(false);
+
     const setCocktailValue = () => {
         getCocktailById(Number(params.id), (c) => {
+            if (c.id === -1) return navigate('/cocktails');
             setCocktail(c);
             document.title = `${c.name} • Bartender's Companion`;
         });
     };
 
-    useEffect(setCocktailValue, [params.id]);
+    useEffect(setCocktailValue, [params.id, navigate]);
 
     const updateCocktail = (c: CocktailModel) => updateCocktailById(Number(params.id), c, setCocktailValue);
+
+    const deleteCocktail = () => deleteCocktailById(Number(params.id), () => navigate('/cocktails'));
 
     return (
         <div className={`cocktail-view ${isAdmin ? '' : 'small-view'}`}>
@@ -46,7 +55,14 @@ const CocktailView = () => {
                                     <CreationDialog open={openEdit} onConfirm={updateCocktail} onClose={handleCloseEdit} cocktail={cocktail} />
                                 </span>
                                 <span className="button">
-                                    <FaTrash />
+                                    <FaTrash onClick={handleClickOpenDelete} />
+                                    <ConfirmationDialog
+                                        open={openDelete}
+                                        onConfirm={deleteCocktail}
+                                        onCancel={handleCloseDelete}
+                                        title={`Delete cocktail ${cocktail.name} ?`}
+                                        description="This operation is irreversible."
+                                    />
                                 </span>
                             </div>
                         )}
