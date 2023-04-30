@@ -1,0 +1,21 @@
+.App {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--background-accent) 30%, var(--background-secondary) 30%);
+  display: flex;
+}
+
+.App > main {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: all 0.3s;
+}
+
+nav.open + main {
+  left: 15vw;
+  width: 85vw;
+}

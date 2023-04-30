@@ -1,0 +1,41 @@
+nav {
+    position: absolute;
+    z-index: 2;
+    left: -15vw;
+    top: 0;
+    width: 15vw;
+    height: 100vh;
+    background-color: var(--background-primary);
+    box-shadow: 0 0 5px 5px var(--shadow-color);
+    transition: all 0.3s;
+}
+
+nav.open {
+    left: 0;
+}
+
+.logo, .logo * {
+    width: 100%;
+    height: 5em;
+    background-color: var(--background-secondary);
+}
+
+.toggle-button {
+    position: absolute;
+    top: 0;
+    left: 15vw;
+    background-color: var(--background-secondary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2.5em;
+    border-radius: 0 0.5em 0.5em 0;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.toggle-button * {
+    width: 55%;
+    height: 55%;
+}
