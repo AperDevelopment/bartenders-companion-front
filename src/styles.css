@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
 
 * {
-    --foreground-primary: #353839;
-    --foreground-secondary: #282A2B;
+    --background-primary: #353839;
+    --background-secondary: #282A2B;
     /* --foreground-accent: #006700; */
-    --foreground-accent: #960018;
+    --background-accent: #960018;
 
-    --background-primary: #CBCECF;
-    --background-secondary: #EAEBEC;
-    --background-accent: white;
+    --foreground-primary: #CBCECF;
+    --foreground-secondary: #EAEBEC;
+    --foreground-accent: #D4AF37;
 
     --button-hover: rgba(0, 0, 0, 0.1);
     --shadow-color: rgba(0, 0, 0, 0.4);

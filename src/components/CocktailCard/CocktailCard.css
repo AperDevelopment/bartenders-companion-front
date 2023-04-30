@@ -23,12 +23,15 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--background-accent);
+    background-color: var(--foreground-secondary);
     border-radius: 1em 1em 0 0;
 }
 
 .card .cocktail-image img {
     object-fit: cover;
+    border-radius: inherit;
+    width: 100%;
+    height: 100%;
 }
 
 .card .cocktail-image *:not(img) {
@@ -37,21 +40,38 @@
 }
 
 .card .card-body {
-    padding: 0.5em 0.75em;
     height: 7em;
 }
 
-.card .card-body span {
+.card .card-body .card-content {
+    padding: 0.5em 0.75em;
+    height: 4.5em;
+}
+
+.card .card-body .card-content h3 {
+    margin-bottom: 0.1em;
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+.card .card-body .card-content p {
     font-size: 0.9em;
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: calc(100% - 1.75em);
+    overflow-y: scroll;
 }
 
 .card-footer {
     height: 0.9em;
-    margin-top: 1em;
     padding: 0 1.25em;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+    bottom: 0;
 }
 
 .card-footer span {

@@ -1,7 +1,7 @@
 import './CocktailView.css';
 import CocktailModel from '../../model/cocktail';
 import { useEffect, useState } from 'react';
-import { getCocktailById, updateCocktailById } from '../../services/cocktail';
+import { getCocktailById, isAdmin, updateCocktailById } from '../../services/cocktail';
 import { useParams } from 'react-router-dom';
 import { FaCocktail, FaEdit, FaTrash } from 'react-icons/fa';
 import { RiTempHotLine } from 'react-icons/ri';
@@ -12,10 +12,6 @@ import CreationDialog from '../../components/CreationDialog';
 const CocktailView = () => {
     const params = useParams();
     const [cocktail, setCocktail] = useState(new CocktailModel({}));
-    const isAdmin = (): boolean => {
-        if (cocktail.ingredients && cocktail.instructions) return true;
-        return false;
-    };
 
     const [openEdit, setOpenEdit] = useState(false);
 
@@ -34,7 +30,7 @@ const CocktailView = () => {
     const updateCocktail = (c: CocktailModel) => updateCocktailById(Number(params.id), c, setCocktailValue);
 
     return (
-        <div className={`cocktail-view ${cocktail.ingredients && cocktail.instructions ? '' : 'small-view'}`}>
+        <div className={`cocktail-view ${isAdmin ? '' : 'small-view'}`}>
             <header>
                 <div className="cocktail-image">
                     <FaCocktail />
@@ -43,7 +39,7 @@ const CocktailView = () => {
                     <span>
                         <h2>{cocktail.name}</h2>
                         <span>({cocktail.volume_ml} mL)</span>
-                        {isAdmin() && (
+                        {isAdmin && (
                             <div className="admin-buttons">
                                 <span className="button">
                                     <FaEdit onClick={handleClickOpenEdit} />
@@ -78,10 +74,10 @@ const CocktailView = () => {
                             </Tooltip>
                         )}
                     </div>
-                    {cocktail.description}
+                    <p>{cocktail.description}</p>
                 </div>
             </header>
-            {isAdmin() && (
+            {isAdmin && (
                 <main>
                     <aside>
                         <h3>Ingredients</h3>

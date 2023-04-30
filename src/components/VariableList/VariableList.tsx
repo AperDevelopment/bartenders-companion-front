@@ -25,6 +25,29 @@ const VariableList = ({ values, onItemAdded, label }: Props) => {
     const isEmpty = () => values.length === 0;
     const getPlaceholder = () => (isEmpty() ? 'You need at least one item' : '');
 
+    const textFieldSx = {
+        '& label': {
+            color: 'var(--foreground-secondary)',
+            fontFamily: 'inherit',
+            '&.Mui-focused': {
+                color: 'var(--foreground-accent)'
+            }
+        },
+        '& .MuiFilledInput-root': {
+            color: 'var(--foreground-primary)',
+            fontFamily: 'inherit',
+            '&::before': {
+                borderColor: 'var(--foreground-secondary)'
+            },
+            '&::after': {
+                borderColor: 'var(--foreground-accent)'
+            },
+            '&:hover::before': {
+                borderColor: 'var(--foreground-secondary)'
+            }
+        }
+    };
+
     return (
         <div style={{ height: '100%', paddingTop: '0.5em' }}>
             <TextField
@@ -38,12 +61,13 @@ const VariableList = ({ values, onItemAdded, label }: Props) => {
                 onKeyDown={addItem}
                 fullWidth
                 margin="dense"
+                sx={textFieldSx}
             />
-            <List dense sx={{ maxHeight: '31vh', overflowY: 'scroll' }}>
+            <List dense sx={{ maxHeight: '40vh', overflowY: 'scroll' }}>
                 {values.map((value) => (
                     <ListItem disablePadding key={value}>
                         <ListItemButton onClick={() => deleteItem(value)}>
-                            <ListItemText primary={value} />
+                            <ListItemText primary={value} sx={{ '& .MuiTypography-root': { fontFamily: 'inherit' } }} />
                         </ListItemButton>
                     </ListItem>
                 ))}

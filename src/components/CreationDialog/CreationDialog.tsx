@@ -33,7 +33,7 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
             setIngredients(cocktail.ingredients);
             setInstructions(cocktail.instructions);
         }
-    }, [cocktail]);
+    }, [cocktail, open]);
 
     const confirm = () => {
         if (!validateResults()) return;
@@ -54,24 +54,66 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
     };
 
     const validateResults = () => {
-        if (id === -1) return false;
+        if (cocktail && id === -1) return false;
         if (name === '') return false;
-        if (description === '') return false;
         if (volume_ml === 0) return false;
         if (ingredients.length === 0) return false;
         if (instructions.length === 0) return false;
         return true;
     };
 
+    const textFieldSx = {
+        '& label': {
+            color: 'var(--foreground-secondary)',
+            fontFamily: 'inherit',
+            '&.Mui-focused': {
+                color: 'var(--foreground-accent)'
+            }
+        },
+        '& .MuiFilledInput-root': {
+            color: 'var(--foreground-primary)',
+            fontFamily: 'inherit',
+            '&::before': {
+                borderColor: 'var(--foreground-secondary)'
+            },
+            '&::after': {
+                borderColor: 'var(--foreground-accent)'
+            },
+            '&:hover::before': {
+                borderColor: 'var(--foreground-secondary)'
+            }
+        }
+    };
+
     return (
         <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
-            <DialogTitle>{id !== -1 ? 'Edit' : 'Create'} cocktail</DialogTitle>
-            <DialogContent>
-                <DialogContentText>* Required field</DialogContentText>
+            <DialogTitle sx={{ backgroundColor: 'var(--background-primary)', fontFamily: 'inherit' }}>{id !== -1 ? 'Edit' : 'Create'} cocktail</DialogTitle>
+            <DialogContent sx={{ backgroundColor: 'var(--background-primary)' }}>
+                <DialogContentText sx={{ color: 'var(--foreground-secondary)', fontFamily: 'inherit' }}>* Required field</DialogContentText>
                 <Grid container spacing={2}>
                     <Grid xs={4} item>
-                        <TextField label="Name" value={name} onChange={(event) => setName(event.target.value)} variant="filled" inputProps={{ maxLength: 255 }} fullWidth required margin="normal" />
-                        <TextField label="Description" value={description} onChange={(event) => setDescription(event.target.value)} variant="filled" fullWidth multiline margin="normal" />
+                        <TextField
+                            label="Name"
+                            value={name}
+                            onChange={(event) => setName(event.target.value)}
+                            variant="filled"
+                            inputProps={{ maxLength: 255 }}
+                            fullWidth
+                            required
+                            margin="normal"
+                            sx={textFieldSx}
+                        />
+                        <TextField
+                            label="Description"
+                            value={description}
+                            onChange={(event) => setDescription(event.target.value)}
+                            variant="filled"
+                            fullWidth
+                            multiline
+                            maxRows={5}
+                            margin="normal"
+                            sx={textFieldSx}
+                        />
                         <TextField
                             margin="normal"
                             label="Volume (mL)"
@@ -82,9 +124,15 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
                             inputProps={{ inputMode: 'numeric', pattern: '[0-9]*' }}
                             fullWidth
                             required
+                            sx={textFieldSx}
                         />
                         <FormGroup>
-                            <FormControlLabel required control={<Checkbox checked={is_alcoholic} onChange={(event) => setAlcoholic(event.target.checked)} />} label="Contains alcohol" />
+                            <FormControlLabel
+                                required
+                                control={<Checkbox checked={is_alcoholic} onChange={(event) => setAlcoholic(event.target.checked)} />}
+                                label="Contains alcohol"
+                                sx={{ fontFamily: 'inherit' }}
+                            />
                             <FormControlLabel required control={<Checkbox checked={is_vegan} onChange={(event) => setVegan(event.target.checked)} />} label="Suitable for vegans" />
                             <FormControlLabel required control={<Checkbox checked={is_hot} onChange={(event) => setHot(event.target.checked)} />} label="Is served hot" />
                         </FormGroup>
@@ -97,9 +145,13 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
                     </Grid>
                 </Grid>
             </DialogContent>
-            <DialogActions>
-                <Button onClick={onClose}>Cancel</Button>
-                <Button onClick={confirm}>Confirm</Button>
+            <DialogActions sx={{ backgroundColor: 'var(--background-primary)' }}>
+                <Button onClick={onClose} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit' }}>
+                    Cancel
+                </Button>
+                <Button onClick={confirm} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit' }}>
+                    Confirm
+                </Button>
             </DialogActions>
         </Dialog>
     );

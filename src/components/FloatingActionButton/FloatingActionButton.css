@@ -1,0 +1,30 @@
+.floating-action-button {
+    background-color: var(--background-accent);
+    border: none;
+    width: 5em;
+    height: 5em;
+    border-radius: 2.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em;
+    position: absolute;
+    bottom: 3.5em;
+    right: 7.5em;
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.floating-action-button * {
+    width: 100%;
+    height: 100%;
+    color: var(--foreground-secondary);
+}
+
+.floating-action-button:hover {
+    background-color: var(--background-secondary);
+}
+
+.floating-action-button:hover * {
+    color: var(--foreground-accent);
+}

@@ -1,7 +1,7 @@
 .App {
   width: 100vw;
   height: 100vh;
-  background: linear-gradient(180deg, var(--foreground-accent) 30%, var(--foreground-secondary) 30%);
+  background: linear-gradient(180deg, var(--background-accent) 30%, var(--background-secondary) 30%);
   display: flex;
 }
 

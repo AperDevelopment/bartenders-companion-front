@@ -17,8 +17,10 @@ const CocktailCard = ({ cocktail }: Props) => {
                     <FaCocktail />
                 </div>
                 <div className="card-body">
-                    <h3>{cocktail.name}</h3>
-                    <span>{cocktail.description}</span>
+                    <div className="card-content">
+                        <h3>{cocktail.name}</h3>
+                        <p>{cocktail.description}</p>
+                    </div>
                     <div className="card-footer">
                         <span className="volume">{cocktail.volume_ml} mL</span>
                         <Link to={`/cocktails/${cocktail.id}`} className="view-more">
