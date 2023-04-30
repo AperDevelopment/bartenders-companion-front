@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap');
+
+* {
+    --background-primary: #353839;
+    --background-secondary: #282A2B;
+    /* --foreground-accent: #006700; */
+    --background-accent: #960018;
+
+    --foreground-primary: #CBCECF;
+    --foreground-secondary: #EAEBEC;
+    --foreground-accent: #D4AF37;
+
+    --button-hover: rgba(0, 0, 0, 0.1);
+    --shadow-color: rgba(0, 0, 0, 0.4);
+
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    color: var(--foreground-primary);
+}
+
+html, body {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--foreground-secondary);
+}
+
+.neutral-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+@keyframes fade-in-none {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        margin-top: 2em;
+        opacity: 0%;
+    }
+
+    100% {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in-mg-2 {
+    0% {
+        margin-top: 4em;
+        opacity: 0%;
+    }
+
+    100% {
+        margin-top: 2em;
+        opacity: 1;
+    }
+}
