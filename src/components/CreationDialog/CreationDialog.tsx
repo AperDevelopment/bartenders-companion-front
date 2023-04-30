@@ -50,6 +50,19 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
         });
 
         onConfirm(c);
+        close();
+    };
+
+    const close = () => {
+        setId(-1);
+        setName('');
+        setDescription('');
+        setVolumeMl(0);
+        setAlcoholic(false);
+        setVegan(false);
+        setHot(false);
+        setIngredients([]);
+        setInstructions([]);
         onClose();
     };
 
@@ -93,6 +106,7 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
                 <Grid container spacing={2}>
                     <Grid xs={4} item>
                         <TextField
+                            autoFocus
                             label="Name"
                             value={name}
                             onChange={(event) => setName(event.target.value)}
@@ -146,7 +160,7 @@ const CreationDialog = ({ open, onConfirm, onClose, cocktail = undefined }: Prop
                 </Grid>
             </DialogContent>
             <DialogActions sx={{ backgroundColor: 'var(--background-primary)' }}>
-                <Button onClick={onClose} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit', '&:hover': { color: 'var(--foreground-accent)' } }}>
+                <Button onClick={close} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit', '&:hover': { color: 'var(--foreground-accent)' } }}>
                     Cancel
                 </Button>
                 <Button onClick={confirm} sx={{ color: 'var(--foreground-primary)', fontFamily: 'inherit', '&:hover': { color: 'var(--foreground-accent)' } }}>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
 import './Cocktails.css';
+import { useEffect, useState } from 'react';
 import { getAllCocktails, insertCocktail, isAdmin } from '../../services/cocktail';
 import CocktailModel from '../../model/cocktail';
 import CocktailCard from '../../components/CocktailCard';
